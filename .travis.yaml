@@ -14,3 +14,11 @@ after_success:
   - docker build -t demirtasdurmus/nginx -f ./nginx
   - docker build -t demirtasdurmus/api -f ./api
   - docker build -t demirtasdurmus/worker -f ./worker
+
+  # login to docker hub
+  # first add env values to travis
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push demirtasdurmus/client
+  - docker push demirtasdurmus/nginx
+  - docker push demirtasdurmus/api
+  - docker push demirtasdurmus/worker
