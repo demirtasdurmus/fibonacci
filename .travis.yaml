@@ -7,7 +7,7 @@ before_install:
   - docker build -t demirtasdurmus/client-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true USERNAME/client-test npm test
+  - docker run -e CI=true USERNAME/client-test npm run test:ci
 
 after_success:
   - docker build -t demirtasdurmus/client -f ./client
