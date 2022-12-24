@@ -13,8 +13,9 @@ export const Fib = () => {
         try {
             const values = await axios.get('/api/values/current')
             setEntity({ ...entity, values: values.data })
-        } catch (error) {
-            alert(JSON.stringify(error))
+        } catch (error: any) {
+            const err = error.response ? error.response.data.message : error.message
+            console.error(err)
         }
     }
 
@@ -22,8 +23,9 @@ export const Fib = () => {
         try {
             const seenIndexes = await axios.get('/api/values/all')
             setEntity({ ...entity, seenIndexes: seenIndexes.data })
-        } catch (error) {
-            alert(JSON.stringify(error))
+        } catch (error: any) {
+            const err = error.response ? error.response.data.message : error.message
+            console.error(err)
         }
     }
 
@@ -34,8 +36,9 @@ export const Fib = () => {
                 index: entity.index,
             })
             setEntity({ ...entity, index: "" })
-        } catch (error) {
-            alert(JSON.stringify(error))
+        } catch (error: any) {
+            const err = error.response ? error.response.data.message : error.message
+            console.error(err)
         }
     }
 
