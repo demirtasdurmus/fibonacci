@@ -5,19 +5,22 @@
             "name": "client",
             "image": "demirtasdurmus/client",
             "hostname": "client",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },
         {
             "name": "api",
             "image": "demirtasdurmus/api",
             "hostname": "api",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },
         {
             "name": "worker",
             "image": "demirtasdurmus/worker",
             "hostname": "worker",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },
         {
             "name": "nginx",
@@ -33,7 +36,8 @@
             "links": [
                 "client",
                 "api"
-            ]
+            ],
+            "memory": 128
         }
     ]
 }
