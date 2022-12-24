@@ -69,6 +69,7 @@ export const Fib = () => {
 
     return (
         <div>
+            <h1>Form</h1>
             <form onSubmit={handleSubmit}>
                 <label>Enter your index:</label>
                 <input
@@ -78,10 +79,10 @@ export const Fib = () => {
                 <button>Submit</button>
             </form>
 
-            <h3>Indexes I have seen:</h3>
+            <p>Indexes I have seen:</p>
             {createSeenIndexes()}
 
-            <h3>Calculated Values:</h3>
+            <p>Calculated Values:</p>
             {renderValues()}
         </div>
     );
