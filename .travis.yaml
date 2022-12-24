@@ -8,7 +8,7 @@ before_install:
   # - docker build -t demirtasdurmus/api-test -f ./client/Dockerfile.dev ./api
 
 script:
-  - docker run -e CI=true USERNAME/client-test npm run test:ci
+  - docker run -e USERNAME/client-test npm run test:ci
   # - docker run -e CI=true USERNAME/api-test npm run test:ci
 
 after_success:
