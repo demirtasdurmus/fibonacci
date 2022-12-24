@@ -7,9 +7,9 @@ before_install:
   - docker build -t demirtasdurmus/client-test -f ./client/Dockerfile.dev ./client
   # - docker build -t demirtasdurmus/api-test -f ./client/Dockerfile.dev ./api
 
-script:
-  - docker run -e demirtasdurmus/client-test npm run test:ci
-  # - docker run -e CI=true USERNAME/api-test npm run test:ci
+# script:
+#   - docker run -e demirtasdurmus/client-test npm run test:ci
+#   # - docker run -e CI=true USERNAME/api-test npm run test:ci
 
 after_success:
   - docker build -t demirtasdurmus/client -f ./client
@@ -24,3 +24,15 @@ after_success:
   - docker push demirtasdurmus/nginx
   - docker push demirtasdurmus/api
   - docker push demirtasdurmus/worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "fibonacci"
+  env: "Fibonacci-env"
+  bucket_name: "elasticbeanstalk-us-east-1-744286667674"
+  bucket_path: "fibonacci"
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
